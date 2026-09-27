@@ -1,58 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Terminli 📅
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Eine moderne, benutzerfreundliche Webapplikation zur unkomplizierten Terminfindung, Abstimmung und Anforderungsverwaltung. **Terminli** bietet eine datenschutzfreundliche Alternative zu gängigen Umfragetools (wie Doodle), ergänzt durch integrierte Tools zum Verwalten von User Stories und einer umfassenden Dokumentation.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Hauptfunktionen (Features)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 📅 1. Terminfindung & Umfragen (Polls)
+* **Einfache Erstellung:** Erstellen von Abstimmungen für Meetings, Events oder allgemeine Entscheidungen mit individuellen Termin- oder Textoptionen.
+* **Teilnahme ohne Registrierung:** Teilnehmer können direkt über eine eindeutige UUID-URL an der Abstimmung teilnehmen – ganz ohne Zwang zur Erstellung eines Benutzerkontos.
+* **Stimmen bearbeiten:** Flexibles Anpassen der eigenen Stimmen über einen individuellen Edit-Token.
+* **Übersichtliches Dashboard:** Angemeldete Benutzer verwalten all ihre erstellten Umfragen an einem zentralen Ort.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📝 2. User Stories Management
+* **Anforderungen festhalten:** Erstellen, Verwalten und Priorisieren von User Stories (inkl. Titel, Beschreibung, Priorität und Akzeptanzkriterien).
+* **Live-Vorschau:** Überprüfung der Formatierung und Inhalte vor dem finalen Speichern.
+* **Detailansicht & Export:** Übersichtliche Darstellung aller Stories inkl. Export-/Download-Funktion.
 
-## Learning Laravel
+### 📖 3. Integriertes Benutzerhandbuch
+* Dokumentation und Anleitung direkt in der Applikation unter `/handbuch` aufrufbar.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 👤 4. Benutzer- & Profilverwaltung
+* Sichere Registrierung und Authentifizierung (Laravel Breeze).
+* Profilverwaltung mit Anpassungsmöglichen.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Technologie-Stack
 
-## Agentic Development
+| Komponente | Technologie |
+| :--- | :--- |
+| **Backend** | PHP 8.3 / Laravel 13 |
+| **Authentifizierung** | Laravel Breeze |
+| **Frontend** | Laravel Blade Templates, Tailwind CSS |
+| **Asset Bundling** | Vite / NPM |
+| **Datenbank** | SQLite / MySQL / PostgreSQL (via Eloquent ORM) |
+| **Code Formatting** | Laravel Pint |
+| **Testing** | PHPUnit / Laravel Test Suite |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## 📋 Voraussetzungen (Requirements)
+
+* **PHP:** `>= 8.3` (mit Erweiterungen: PDO, mbstring, openssl, tokenizer, xml)
+* **Composer:** `>= 2.0`
+* **Node.js & NPM:** Node `>= 18.x`
+* **Datenbank:** SQLite (Standard) oder MySQL/PostgreSQL
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Repository klonen
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/roberthoferzuerich-alt/terminli.git
+cd terminli
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. PHP & Frontend-Abhängigkeiten installieren
+```bash
+composer install
+npm install
+```
 
-## Contributing
+### 3. Umgebungsdatei (.env) einrichten
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Datenbank einrichten & Migrationen ausführen
+Falls Sie SQLite verwenden:
+```bash
+touch database/database.sqlite
+php artisan migrate --seed
+```
 
-## Code of Conduct
+### 5. Entwicklungsserver starten
+Starten Sie den Vite-Dev-Server und den Laravel-Entwicklungsserver parallel:
+```bash
+# Frontend Assets im Watch-Modus
+npm run dev
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Laravel Server (in einem zweiten Terminal)
+php artisan serve
+```
 
-## Security Vulnerabilities
+Alternativ über Composer:
+```bash
+composer run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Die Anwendung ist nun unter `http://127.0.0.1:8000` erreichbar.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🧪 Testing & Codequalität
+
+Das Projekt setzt auf automatisierte Tests und einheitliche Code-Standards.
+
+* **Automatisierte Tests ausführen:**
+  ```bash
+  php artisan test
+  ```
+* **Code-Formatierung prüfen/korrigieren (Laravel Pint):**
+  ```bash
+  vendor/bin/pint
+  ```
+
+---
+
+## 📄 Lizenz & Autor
+
+Entwickelt von **Robert Hofer**.  
+Lizenziert unter der [MIT License](LICENSE).
