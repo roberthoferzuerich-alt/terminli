@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,15 @@ Route::post('/about-me/avatar', function (Request $request) {
 
     return back()->with('success', 'Profilbild erfolgreich gespeichert!');
 })->name('about_me.avatar');
+
+// Storys routes (accessible directly)
+Route::get('/storys', [StoryController::class, 'index'])->name('stories.index');
+Route::get('/storys/create', [StoryController::class, 'create'])->name('stories.create');
+Route::post('/storys/preview', [StoryController::class, 'preview'])->name('stories.preview');
+Route::post('/storys', [StoryController::class, 'store'])->name('stories.store');
+Route::get('/storys/detail', [StoryController::class, 'detail'])->name('stories.detail');
+Route::get('/storys/{story}/download', [StoryController::class, 'download'])->name('stories.download');
+Route::delete('/storys/{story}', [StoryController::class, 'destroy'])->name('stories.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [PollController::class, 'index'])->name('dashboard');
